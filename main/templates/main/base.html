@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="{% static 'main/img/favicon.ico' %}" type="image/x-icon">
+        <title>{{ title }}</title>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4727648452720993" crossorigin="anonymous"></script>
+    </head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="admin/" class="header__logo">
+                    <img class="header__logo" src="{% static 'main/img/logo.png' %}" alt="">
+                </a>
+                <nav class="nav">
+                    <a href="{% url 'homepage' %}" class="nav__link">Home</a>
+                    <a href="{% url 'news' %}" class="nav__link">News</a>
+                    <a href="{% url 'post' %}" class="nav__link">Post</a>
+                    <a href="{% url 'attractions' %}" class="nav__link">Attractions</a>
+                    <a href="{% url 'account' %}" class="nav__link">Account</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>

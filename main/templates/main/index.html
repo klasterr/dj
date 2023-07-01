@@ -1,0 +1,74 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="intro">
+    <div class="container">
+        <div class="intro__title">
+            <img src="{% static 'main/img/intro__title.png' %}" alt="" class="intro__title__image">
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container">
+        <div class="most__viewed">
+            <ul class="most__viewed__posts">
+                <li class="most__viewed__">
+                    <figure class="mvp">
+                        <a class="mvpurl" href="#">
+                            <img class="mvpimage" src="{% static 'main/img/348x400.png' %}" alt="">
+                        </a>
+                        <figcaption class="mvptitle">
+                            <h6 class="mvpheading">Lorem ipsum dolor sit.</h6>
+                            <div class="mvptext">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis facere perspiciatis minima delectus dignissimos sint.
+                                </p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="most__viewed__">
+                    <figure class="mvp">
+                        <a class="mvpurl" href="">
+                            <img class="mvpimage" src="{% static 'main/img/348x400.png' %}" alt="">
+                        </a>
+                        <figcaption class="mvptitle">
+                            <h6 class="mvpheading">Lorem ipsum dolor sit.</h6>
+                            <div class="mvptext">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis facere perspiciatis minima delectus dignissimos sint.
+                                </p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="most__viewed__">
+                    <figure class="mvp">
+                        <a class="mvpurl" href="">
+                            <img class="mvpimage" src="{% static 'main/img/348x400.png' %}" alt="">
+                        </a>
+                        <figcaption class="mvptitle">
+                            <h6 class="mvpheading">Lorem ipsum dolor sit.</h6>
+                            <div class="mvptext">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis facere perspiciatis minima delectus dignissimos sint.
+                                </p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </div>
+        <ul class="users">
+            <style>.users{font-size: 25px;}</style>
+            {% for user in users %}
+            <li><a href="{{ user.get_absolute_url }}">{{ user.nickname }}</a></li>
+            <li><a href="{{ user.get_absolute_url }}"></a>{{ user.email }}</a></li>
+            <li><a href="{{ user.get_absolute_url }}"></a>{{ user.password }}</a></li>
+            <hr><br>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}

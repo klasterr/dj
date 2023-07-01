@@ -1,0 +1,164 @@
+*, *:after, *:before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #fff;
+}
+
+/* Container *
+=============== */
+
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header *
+=============== */
+
+.header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+.header__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    margin: 0 30px;
+}
+
+.header__logo{
+    max-height: 55px;
+    opacity: .85;
+    transition: opacity .1s linear;
+}
+/* Nav *
+=============== */
+
+.nav{
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.nav__link{
+    font-family: 'Nunito';
+    text-decoration: none;
+    color: white;
+    margin: 0 30px;
+    opacity: .85;
+    
+    transition: opacity .1s linear;
+}
+.nav__link:first-child{
+    margin-left: 0;
+}
+.nav__link:last-child{
+    margin-right: 0;
+}
+
+.nav__link:hover, 
+.header__logo:hover{
+    opacity: 1;
+}
+
+/* Intro *
+=============== */
+
+.intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/0/0d/Zamek_w_Brze%C5%BCanach_P1600940.jpg') no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.intro__title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+}
+.intro__title__image{
+    opacity: .9;
+    min-width: 100px;
+}
+
+/* Most Viewed Posts *
+=============== */
+.most__viewed{
+    position: relative;
+    margin: -200px 0 0 0;
+    z-index: 1;
+}
+.most__viewed__posts{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 80px;
+    list-style: none;
+}
+.most__viewed__{
+    display: inline-block;
+}
+.mvp{
+    color: #FFFFFF;
+    height: 400px;
+    max-width: 340px;
+}
+.mvpurl{
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+}
+.mvpimage{
+    width: auto;
+    max-width: 340px;
+    height: 400px;
+    line-height: normal;
+    vertical-align: middle;
+}
+.mvptitle{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    max-width: 340px;
+    width: 100%;
+    padding: 0 20px;
+    background-color: rgba(0,0,0,.55);
+    line-height: 1;
+}
+.mvpheading{
+    padding: 20px 0;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+.mvptext{
+    max-height: 0;
+    font-weight: 400;
+    overflow: hidden;
+    transition: max-height .6s cubic-bezier(0, 1, 0, 1) -.1s;
+}
+.mvp:hover .mvptitle .mvptext{
+    max-height:1200px; transition-timing-function:cubic-bezier(0.5, 0, 1, 0); transition-delay:0s;
+}
+.mvptext p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+    padding:0 0 15px 0;
+}
