@@ -10,12 +10,14 @@
         <link rel="shortcut icon" href="{% static 'main/img/favicon.ico' %}" type="image/x-icon">
         <title>{{ title }}</title>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4727648452720993" crossorigin="anonymous"></script>
+        {% block head %}
+        {% endblock head %}
     </head>
 <body>
     <header class="header">
         <div class="container">
             <div class="header__inner">
-                <a href="admin/" class="header__logo">
+                <a href="/" class="header__logo">
                     <img class="header__logo" src="{% static 'main/img/logo.png' %}" alt="">
                 </a>
                 <nav class="nav">

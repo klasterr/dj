@@ -1,1 +1,101 @@
 {% extends 'main/base.html' %}
+{% block head %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.12/dist/cropper.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.12/dist/cropper.css">
+<script>
+    // Функція для показу вибраного зображення
+    function showImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                document.getElementById('preview').src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+{% endblock head %}
+{% block content %}
+<div class="container" id="post_page">
+    <h1 class="post_header">Додати новину</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="topic" class="post_header post_label">Тема:</label>
+            {{ form.topic }}
+        </div>
+        <div class="form-group">
+            <label for="author" class="post_header post_label">Автор:</label>
+            {{ form.author }}
+        </div>
+        <div class="form-group">
+            <label for="description" class="post_header post_label">Опис:</label>
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            <label for="photo" class="post_header post_label">Фото:</label>
+            {{ form.photo }}
+            <!-- <img id="preview" src="#" alt=""/> -->
+            <div id="image-preview"></div>
+            <button type="button" id="crop-button" disabled>Обрізати фото</button>
+            <script>
+                $(document).ready(function() {
+                    var cropper;
+        
+                    // Після вибору зображення
+                    $('#image-input').change(function(event) {
+                        var files = event.target.files;
+                        var image = files[0];
+        
+                        var reader = new FileReader();
+                        reader.onload = function() {
+                            // Створюємо елемент зображення для попереднього перегляду
+                            var img = document.createElement('img');
+                            img.src = reader.result;
+                            img.id = 'preview';
+                            $('#image-preview').html(img);
+        
+                            // Ініціалізуємо Cropper
+                            cropper = new Cropper(img, {
+                                aspectRatio: 1, // Вказуємо бажане співвідношення сторін
+                                viewMode: 2, // Встановлюємо перегляд в режимі кадру
+                                autoCropArea: 1, // Автоматично обрізаємо зображення на весь розмір
+                                crop: function(event) {
+                                    // Активуємо кнопку обрізки після виділення області
+                                    $('#crop-button').prop('disabled', !event.detail.width || !event.detail.height);
+                                }
+                            });
+        
+                            // Активуємо кнопку обрізки
+                            $('#crop-button').prop('disabled', false);
+                        };
+        
+                        reader.readAsDataURL(image);
+                    });
+        
+                    // Обрізка фото
+                    $('#crop-button').click(function() {
+                        // Отримуємо обрізане зображення
+                        var croppedImage = cropper.getCroppedCanvas().toDataURL();
+        
+                        // Оновлюємо джерело зображення попереднього перегляду на обрізане зображення
+                        $('#preview').attr('src', croppedImage);
+        
+                        // Закриваємо Cropper
+                        cropper.destroy();
+        
+                        // Скидаємо значення поля вводу файлу
+                        $('#image-input').val('');
+                    });
+                });
+            </script>
+            
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Опублікувати</button>
+    </form>
+</div>
+{% endblock content %}

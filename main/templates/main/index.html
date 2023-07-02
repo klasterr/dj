@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<style>.header{position: fixed;background-color: rgba(0, 0, 0, 0.4);}</style>
 <div class="intro">
     <div class="container">
         <div class="intro__title">
@@ -60,11 +61,22 @@
                 </li>
             </ul>
         </div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4727648452720993" crossorigin="anonymous"></script>
+        <!-- horsizontal -->
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-4727648452720993"
+            data-ad-slot="7076373499"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
         <ul class="users">
             <style>.users{font-size: 25px;}</style>
             {% for user in users %}
-            <li><a href="{{ user.get_absolute_url }}">{{ user.nickname }}</a></li>
-            <li><a href="{{ user.get_absolute_url }}"></a>{{ user.email }}</a></li>
+            <li><a href="{{ user.get_absolute_url }}">{{ user.nickname|safe }}</a></li>
+            <li><a href="{{ user.get_absolute_url }}"></a>{{ user.email|urlize }}</a></li>
             <li><a href="{{ user.get_absolute_url }}"></a>{{ user.password }}</a></li>
             <hr><br>
             {% endfor %}
